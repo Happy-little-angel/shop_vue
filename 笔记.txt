@@ -1,0 +1,17 @@
+1.
+实现重置:通过ref 获取form表单;之后给重置按钮绑定事件: <el-button type="info" @click="resetLoginForm">重置</el-button>
+ resetLoginForm () {
+                this.$refs.loginFormRef.resetFields();
+            },
+2.
+form 登录退出:实现登录前的表单数据的验证:
+通过ref 获取form表单;之后给登录按钮绑定事件:
+  login () {
+                this.$refs.loginFormRef.validate(valid => {
+                    //valid 验证通过为true,否则是false
+                    console.log("valid",valid)
+                })
+            }
+3.
+Message添加到全局属性上
+Vue.prototype.$message = Message
