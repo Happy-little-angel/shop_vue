@@ -36,7 +36,6 @@
 </template>
 
 <script>
-import './../api/login'
     export default {
         name:"login",
         data(){
@@ -74,14 +73,14 @@ import './../api/login'
                     //ture的时候发起请求;
                    //const result = await this.$http.post('login.php',this.form)
                    //解构出来:
-                   const {data:res}  = await this.$http.post('login.php',this.form)
-                   console.log("result",res)
-                   if(res.status !==200) return this.$message.error("登录失败")
+                   const {data:res}  = await this.$http.post('login',this.form)
+                // console.log("result:",res.data)
+                   if(res.meta.status !==200) return this.$message.error("登录失败")
                    this.$message.success("登录成功")
                    //1将登录成功之后生成的token,存在sessionStorge中;
                         //1.1项目中除了登录之外的api接口,必须在登录之后才能访问
                         //1.2token值应在当前网址中生效 所以存在sessionStorge中
-                    window.sessionStorage.setItem("token",res.token)
+                    window.sessionStorage.setItem("token",res.data.token)
                     //2.通过编程式导航跳转到后台主页,路由地址是 /home
                     console.log("this.$router",this.$router)
                     this.$router.push('/home')

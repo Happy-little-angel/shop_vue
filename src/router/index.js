@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../views/Login.vue'
+import Login from '../components/Login.vue'
 
 Vue.use(VueRouter)
 
@@ -19,8 +19,13 @@ Vue.use(VueRouter)
   {
     path: '/home',
     name: 'Home',
-    component: () => import(/* webpackChunkName: "about" */ '../components/Home.vue')
-  }
+    component: () => import(/* webpackChunkName: "about" */ '../components/Home.vue'),
+    children:[
+      {path:'/welcome',component:() => import('./../components/Welcome.vue')},
+      {path:"/users",component:() => import('./../components/Users.vue')}
+    ],
+    redirect:'/welcome'
+  },  
 ]
 
 const router = new VueRouter({
