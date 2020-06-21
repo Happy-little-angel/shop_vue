@@ -22,7 +22,9 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "about" */ '../components/Home.vue'),
     children:[
       {path:'/welcome',component:() => import('./../components/Welcome.vue')},
-      {path:"/users",component:() => import('./../components/Users.vue')}
+      {path:"/users",component:() => import('./../components/Users.vue')},
+      {path:"/rights",component:() => import('./../components/rights/Right.vue')},
+      {path:"/roles",component:() => import('./../components/rights/Roles.vue')}
     ],
     redirect:'/welcome'
   },  
